@@ -1,16 +1,4 @@
-class Job
-  def initialize(id, type, payload)
-    @id = id
-    @type = type
-    @payload = payload
-  end
-
-  def display
-    puts "job #{@id}"
-    puts "type #{@type}"
-    puts "salary #{@payload}"
-  end 
-end 
+require_relative "job"
 
 jobs = []
 
@@ -21,4 +9,5 @@ jobs << job2
 
 jobs.each do |job|
   job.display
+  puts(" ")
 end
