@@ -1,5 +1,4 @@
 class Queue
-  attr_reader :jobs # expose jobs variable
   def initialize
     @jobs = []
   end
@@ -10,5 +9,9 @@ class Queue
 
   def size
     @jobs.length
+  end
+
+  def each(&block)
+    @jobs.each(&block)
   end
 end

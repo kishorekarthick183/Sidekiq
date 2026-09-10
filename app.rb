@@ -8,7 +8,7 @@ jobs.add(Job.new(2, "frontend developer", 10_000))
 
 puts("job of size: #{jobs.size}")
 
-jobs.jobs.each do |job|
+jobs.each do |job|
   job.display
   puts(" ")
 end
