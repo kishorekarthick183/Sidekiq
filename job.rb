@@ -9,5 +9,6 @@ class Job
     puts "job #{@id}"
     puts "type #{@type}"
     puts "salary #{@payload}"
+    puts " "
   end 
 end 
