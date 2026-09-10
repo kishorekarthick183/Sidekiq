@@ -1,4 +1,5 @@
 class Job
+  attr_reader :id, :type, :payload
   def initialize(id, type, payload)
     @id = id
     @type = type
@@ -9,6 +10,6 @@ class Job
     puts "job #{@id}"
     puts "type #{@type}"
     puts "salary #{@payload}"
-    puts " "
+    puts ""
   end 
 end 

@@ -4,6 +4,8 @@ class Queue
   end
 
   def add(job)
+    puts ""
+    puts "Adding Job ##{job.id}"
     @jobs << job
   end
 
@@ -11,11 +13,11 @@ class Queue
     @jobs.length
   end
 
-  def each(&block)
-    @jobs.each(&block)
-  end
-
   def next_job
     @jobs.shift
+  end
+
+  def empty?
+    @jobs.empty?
   end
 end
