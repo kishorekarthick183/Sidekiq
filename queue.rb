@@ -1,23 +1,31 @@
-class Queue
+class JobQueue
   def initialize
     @jobs = []
+    @mutex = Mutex.new
   end
 
   def add(job)
-    puts ""
-    puts "Adding Job ##{job.id}"
-    @jobs << job
-  end
-
-  def size
-    @jobs.length
+    @mutex.synchronize do
+      puts "Adding Job ##{job.id}"
+      @jobs << job
+    end
   end
 
   def next_job
-    @jobs.shift
+    @mutex.synchronize do
+      @jobs.shift
+    end
+  end
+
+  def size
+    @mutex.synchronize do
+      @jobs.length
+    end
   end
 
   def empty?
-    @jobs.empty?
+    @mutex.synchronize do
+      @jobs.empty?
+    end
   end
 end

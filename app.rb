@@ -4,22 +4,33 @@ require_relative "worker"
 
 jobs = Queue.new
 
-worker_thread = Thread.new do
+workers = []
+
+3.times do |i|
   worker = Worker.new(jobs)
-  worker.start
+
+  thread = Thread.new do
+    puts "Starting Worker #{i + 1}"
+    worker.start
+  end
+
+  workers << thread
 end
 
 sleep 1
 
-jobs.add(Job.new(1, "software engineering intern", 13_000))
+10.times do |i|
+  jobs.add(
+    Job.new(
+      i + 1,
+      "job type #{i + 1}",
+      (i + 1) * 1000
+    )
+  )
+end
 
-sleep 2
+sleep 10
 
-jobs.add(Job.new(2, "frontend developer", 10_000))
-
-sleep 2
-
-jobs.add(Job.new(3, "backend developer", 13_000))
-
-sleep 5
-worker_thread.kill
+workers.each do |thread|
+  thread.kill
+end
