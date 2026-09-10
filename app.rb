@@ -1,13 +1,14 @@
 require_relative "job"
+require_relative "queue"
 
-jobs = []
+jobs = Queue.new
 
-job1 = Job.new(1, "software engineering intern", 13_000)
-job2 = Job.new(2, "frontend developer", 10_000)
-jobs << job1
-jobs << job2
+jobs.add(Job.new(1, "software engineering intern", 13_000))
+jobs.add(Job.new(2, "frontend developer", 10_000))
 
-jobs.each do |job|
+puts("job of size: #{jobs.size}")
+
+jobs.jobs.each do |job|
   job.display
   puts(" ")
 end
