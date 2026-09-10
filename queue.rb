@@ -14,4 +14,8 @@ class Queue
   def each(&block)
     @jobs.each(&block)
   end
+
+  def next_job
+    @jobs.shift
+  end
 end
